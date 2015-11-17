@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Welcome to EnlightNS’s documentation! &mdash; EnlightNS 1.0.0 documentation</title>
+  <title>Welcome to EnlightNS’s API Documentation! &mdash; EnlightNS 1.0.0 documentation</title>
   
 
   
@@ -69,9 +69,18 @@
         
           
           
-              <ul class="simple">
+              <!-- Local TOC -->
+              <div class="local-toc"><ul>
+<li><a class="reference internal" href="#">Welcome to EnlightNS&#8217;s API Documentation!</a><ul>
+<li><a class="reference internal" href="#post-api-token-auth">POST /api-token-auth</a></li>
+<li><a class="reference internal" href="#get-user-record">GET /user/record/</a></li>
+<li><a class="reference internal" href="#get-user-record-record-id">GET /user/record/&lt;record_id&gt;</a></li>
+<li><a class="reference internal" href="#put-user-record-record-id">PUT /user/record/&lt;record_id&gt;</a></li>
+<li><a class="reference internal" href="#get-tools-whatismyip">GET /tools/whatismyip/</a></li>
 </ul>
-
+</li>
+</ul>
+</div>
           
         
       </div>
@@ -94,7 +103,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="#">Docs</a> &raquo;</li>
       
-    <li>Welcome to EnlightNS&#8217;s documentation!</li>
+    <li>Welcome to EnlightNS&#8217;s API Documentation!</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -107,21 +116,154 @@
 </div>
           <div role="main" class="document">
             
-  <div class="section" id="welcome-to-enlightns-s-documentation">
-<h1>Welcome to EnlightNS&#8217;s documentation!<a class="headerlink" href="#welcome-to-enlightns-s-documentation" title="Permalink to this headline">¶</a></h1>
-<p>Contents:</p>
-<div class="toctree-wrapper compound">
-<ul class="simple">
-</ul>
+  <div class="section" id="welcome-to-enlightns-s-api-documentation">
+<h1>Welcome to EnlightNS&#8217;s API Documentation!<a class="headerlink" href="#welcome-to-enlightns-s-api-documentation" title="Permalink to this headline">¶</a></h1>
+<p>This page outlines the EnlightNS APIs and their usage.</p>
+<p>The API is hosted at <code class="docutils literal"><span class="pre">https://api.enlightns.com</span></code></p>
+<div class="section" id="post-api-token-auth">
+<h2>POST /api-token-auth<a class="headerlink" href="#post-api-token-auth" title="Permalink to this headline">¶</a></h2>
+<p>Returns the API token for subsequent calls</p>
+<p><strong>Request Headers</strong></p>
+<div class="highlight-python"><div class="highlight"><pre>Content-Type: application/json
+</pre></div>
+</div>
+<p><strong>Request Body</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;email&quot;</span><span class="p">:</span> <span class="s">&quot;your.email@enlightns.com&quot;</span><span class="p">,</span>
+    <span class="s">&quot;password&quot;</span><span class="p">:</span> <span class="s">&quot;&lt;password&gt;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Response</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;token&quot;</span><span class="p">:</span> <span class="s">&quot;&lt;your_auth_token&gt;&quot;</span>
+<span class="p">}</span>
+</pre></div>
 </div>
 </div>
-<div class="section" id="indices-and-tables">
-<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><a class="reference internal" href="genindex.html"><span>Index</span></a></li>
-<li><a class="reference internal" href="py-modindex.html"><span>Module Index</span></a></li>
-<li><a class="reference internal" href="search.html"><span>Search Page</span></a></li>
+<div class="section" id="get-user-record">
+<h2>GET /user/record/<a class="headerlink" href="#get-user-record" title="Permalink to this headline">¶</a></h2>
+<p>Lists a user&#8217;s records</p>
+<p><strong>Request Headers</strong></p>
+<div class="highlight-python"><div class="highlight"><pre>Authorization: &lt;your_auth_token&gt;
+</pre></div>
+</div>
+<p><strong>GET Parameters</strong></p>
+<ul>
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">type</span></code> (<em>optionnal</em>), used to filter record type</dt>
+<dd><ul class="first last simple">
+<li><code class="docutils literal"><span class="pre">A</span></code></li>
+<li><code class="docutils literal"><span class="pre">A,AAAA</span></code></li>
+<li><code class="docutils literal"><span class="pre">CNAME</span></code></li>
 </ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p><strong>Response</strong></p>
+<div class="highlight-python"><div class="highlight"><pre>Content-Type: application/json
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">[</span>
+    <span class="p">{</span>
+        <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">402</span><span class="p">,</span>
+        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;domain1.enlightns.info&quot;</span><span class="p">,</span>
+        <span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="s">&quot;A&quot;</span><span class="p">,</span>
+        <span class="s">&quot;content&quot;</span><span class="p">:</span> <span class="s">&quot;54.238.66.12&quot;</span><span class="p">,</span>
+        <span class="s">&quot;ttl&quot;</span><span class="p">:</span> <span class="mi">3600</span><span class="p">,</span>
+        <span class="s">&quot;auth&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+        <span class="s">&quot;active&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s">&quot;is_free&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s">&quot;owner&quot;</span><span class="p">:</span> <span class="s">&quot;your_user&quot;</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+        <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">418</span><span class="p">,</span>
+        <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;domain2.enlightns.info&quot;</span><span class="p">,</span>
+        <span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="s">&quot;CNAME&quot;</span><span class="p">,</span>
+        <span class="s">&quot;content&quot;</span><span class="p">:</span> <span class="s">&quot;domain2.enlightns.info&quot;</span><span class="p">,</span>
+        <span class="s">&quot;ttl&quot;</span><span class="p">:</span> <span class="mi">60</span><span class="p">,</span>
+        <span class="s">&quot;auth&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+        <span class="s">&quot;active&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s">&quot;is_free&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+        <span class="s">&quot;owner&quot;</span><span class="p">:</span> <span class="s">&quot;your_user&quot;</span>
+    <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-user-record-record-id">
+<h2>GET /user/record/&lt;record_id&gt;<a class="headerlink" href="#get-user-record-record-id" title="Permalink to this headline">¶</a></h2>
+<p>Gets the details for one record</p>
+<p><strong>Request Headers</strong></p>
+<div class="highlight-python"><div class="highlight"><pre>Authorization: &lt;your_auth_token&gt;
+</pre></div>
+</div>
+<p><strong>Request Parameters</strong></p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">record_id</span></code>: ID of the record to retrieve</li>
+</ul>
+<p><strong>Response</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">26</span><span class="p">,</span>
+    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;ns2.enlightns.org&quot;</span><span class="p">,</span>
+    <span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="s">&quot;A&quot;</span><span class="p">,</span>
+    <span class="s">&quot;content&quot;</span><span class="p">:</span> <span class="s">&quot;192.99.43.21&quot;</span><span class="p">,</span>
+    <span class="s">&quot;ttl&quot;</span><span class="p">:</span> <span class="mi">86400</span><span class="p">,</span>
+    <span class="s">&quot;auth&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s">&quot;active&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s">&quot;is_free&quot;</span><span class="p">:</span> <span class="n">false</span><span class="p">,</span>
+    <span class="s">&quot;owner&quot;</span><span class="p">:</span> <span class="s">&quot;d2s3admin&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="put-user-record-record-id">
+<h2>PUT /user/record/&lt;record_id&gt;<a class="headerlink" href="#put-user-record-record-id" title="Permalink to this headline">¶</a></h2>
+<p>Updates the content of a record</p>
+<p><strong>Request Headers</strong></p>
+<div class="highlight-python"><div class="highlight"><pre>Authorization: &lt;your_auth_token&gt;
+Content-Type: application/json
+</pre></div>
+</div>
+<p><strong>Request Parameters</strong></p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">record_id</span></code>: ID of the record to update</li>
+</ul>
+<p><strong>Request Body</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;content&quot;</span><span class="p">:</span> <span class="s">&quot;&lt;new_record_content&gt;&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Response</strong></p>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">402</span><span class="p">,</span>
+    <span class="s">&quot;name&quot;</span><span class="p">:</span> <span class="s">&quot;domain1.enlightns.info&quot;</span><span class="p">,</span>
+    <span class="s">&quot;type&quot;</span><span class="p">:</span> <span class="s">&quot;A&quot;</span><span class="p">,</span>
+    <span class="s">&quot;content&quot;</span><span class="p">:</span> <span class="s">&quot;&lt;new_record_content&gt;&quot;</span><span class="p">,</span>
+    <span class="s">&quot;ttl&quot;</span><span class="p">:</span> <span class="mi">3600</span><span class="p">,</span>
+    <span class="s">&quot;auth&quot;</span><span class="p">:</span> <span class="n">null</span><span class="p">,</span>
+    <span class="s">&quot;active&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s">&quot;is_free&quot;</span><span class="p">:</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s">&quot;owner&quot;</span><span class="p">:</span> <span class="s">&quot;your_user&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="get-tools-whatismyip">
+<h2>GET /tools/whatismyip/<a class="headerlink" href="#get-tools-whatismyip" title="Permalink to this headline">¶</a></h2>
+<p>Returns your public IP</p>
+<p><strong>Response</strong></p>
+<div class="highlight-python"><div class="highlight"><pre>Content-Type: application/json
+</pre></div>
+</div>
+<div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
+    <span class="s">&quot;ip&quot;</span><span class="p">:</span> <span class="s">&quot;184.55.30.206&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
 </div>
 
 

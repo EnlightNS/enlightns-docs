@@ -1,2 +1,5 @@
 # enlightns-docs
-The documentation for all enlightns projects
+
+EnlightNS API documentation.
+
+Create an account on [EnlightNS](http://enlightns.com)
