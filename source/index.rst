@@ -12,7 +12,7 @@ The API is hosted at ``https://api.enlightns.com``
 
 POST /api-token-auth
 ^^^^^^^^^^^^^^^^^^^^
-Returns the API token for subsequent calls
+Returns the API authentication token for subsequent calls
 
 **Request Headers**
 
@@ -27,8 +27,8 @@ Returns the API token for subsequent calls
 ::
 
     {
-        "email": "your.email@enlightns.com",
-        "password": "<password>"
+        "email": "your.email@example.com",
+        "password": "p455w0rd"
     }
 
 ..
