@@ -65,12 +65,6 @@ Lists a user's records
 
 
 **Response**
-::
-
- Content-Type: application/json
-
-..
-
 
 ::
 
@@ -187,12 +181,6 @@ GET /tools/whatismyip/
 Returns your public IP
 
 **Response**
-
-::
-
-    Content-Type: application/json
-
-..
 
 ::
 

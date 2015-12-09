@@ -122,15 +122,15 @@
 <p>The API is hosted at <code class="docutils literal"><span class="pre">https://api.enlightns.com</span></code></p>
 <div class="section" id="post-api-token-auth">
 <h2>POST /api-token-auth<a class="headerlink" href="#post-api-token-auth" title="Permalink to this headline">¶</a></h2>
-<p>Returns the API token for subsequent calls</p>
+<p>Returns the API authentication token for subsequent calls</p>
 <p><strong>Request Headers</strong></p>
 <div class="highlight-python"><div class="highlight"><pre>Content-Type: application/json
 </pre></div>
 </div>
 <p><strong>Request Body</strong></p>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
-    <span class="s">&quot;email&quot;</span><span class="p">:</span> <span class="s">&quot;your.email@enlightns.com&quot;</span><span class="p">,</span>
-    <span class="s">&quot;password&quot;</span><span class="p">:</span> <span class="s">&quot;&lt;password&gt;&quot;</span>
+    <span class="s">&quot;email&quot;</span><span class="p">:</span> <span class="s">&quot;your.email@example.com&quot;</span><span class="p">,</span>
+    <span class="s">&quot;password&quot;</span><span class="p">:</span> <span class="s">&quot;p455w0rd&quot;</span>
 <span class="p">}</span>
 </pre></div>
 </div>
@@ -162,9 +162,6 @@
 </li>
 </ul>
 <p><strong>Response</strong></p>
-<div class="highlight-python"><div class="highlight"><pre>Content-Type: application/json
-</pre></div>
-</div>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">[</span>
     <span class="p">{</span>
         <span class="s">&quot;id&quot;</span><span class="p">:</span> <span class="mi">402</span><span class="p">,</span>
@@ -255,9 +252,6 @@ Content-Type: application/json
 <h2>GET /tools/whatismyip/<a class="headerlink" href="#get-tools-whatismyip" title="Permalink to this headline">¶</a></h2>
 <p>Returns your public IP</p>
 <p><strong>Response</strong></p>
-<div class="highlight-python"><div class="highlight"><pre>Content-Type: application/json
-</pre></div>
-</div>
 <div class="highlight-python"><div class="highlight"><pre><span class="p">{</span>
     <span class="s">&quot;ip&quot;</span><span class="p">:</span> <span class="s">&quot;184.55.30.206&quot;</span>
 <span class="p">}</span>
