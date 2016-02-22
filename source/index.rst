@@ -191,7 +191,7 @@ Returns your public IP
 ..
 
 
-GET /nic/update/?username=<USERNAME>&password=<PASSWORD>&ip=<IP_ADDRESS>&hostname=<HOSTNAME>
+GET /nic/update/?username=<username>&password=<password>&ip=<ip_address>&hostname=<hostname>
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Update your IP using a one liner
 *HTTP is available ONLY for this API and very old router who wouldn't support HTTPS*
