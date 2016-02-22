@@ -188,4 +188,25 @@ Returns your public IP
         "ip": "184.55.30.206"
     }
 
-.. 
+..
+
+
+GET /nic/update/?username=<USERNAME>&password=<PASSWORD>&ip=<IP_ADDRESS>&hostname=<HOSTNAME>
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Update your IP using a one liner
+*HTTP is available ONLY for this API and very old router who wouldn't support HTTPS*
+
+**Request Parameters**
+
+- ``username``: the email you registered with
+- ``password``: your password
+- ``ip``:       your IP address
+- ``hostname``: your hostname (my_hostname.example.com)
+
+**Response**
+
+::
+
+    good 74.152.77.75
+
+..
